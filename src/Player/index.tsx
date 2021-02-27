@@ -28,7 +28,7 @@ mainMusic.loop = true;
 mainMusic.volume = 0.5;
 
 
-export default function MySlider() {
+export default function Player() {
     const classes = useStyles();
     const [valueSound, setValueSound] = useState(50);
     const [valueMusic, setValueMusic] = useState(50);

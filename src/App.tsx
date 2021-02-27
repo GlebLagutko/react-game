@@ -16,7 +16,7 @@ import {config} from "webpack";
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import Popup from "reactjs-popup";
 import {EndGameModal} from "./EndGameModal";
-import MySlider from "./MySlider";
+import Player from "./Player";
 import TableOfResults from "./TableOfResults";
 import {Footer} from "./Footer";
 
@@ -55,7 +55,7 @@ function App() {
                         <div className="col-12 col-md-4 col-lg-6 col-xl-3 mt-4">
                             <ButtonGroup buttonHandler={buttonHandler}/>
 
-                            <MySlider/>
+                            <Player/>
                         </div>
                         <div className="col-12 col-md-12 col-lg-12 col-xl-3 mt-4">
                             <TableOfResults/>
