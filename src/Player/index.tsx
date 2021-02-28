@@ -88,6 +88,7 @@ export default function Player() {
     }
 
 
+    // @ts-ignore
     return (
         <div className={classes.root} style={{margin: "30px 0px", width: "100%"}}>
 
@@ -99,9 +100,12 @@ export default function Player() {
                 }
             </Grid>*/}
             <Grid container spacing={2}> Sound :
-                <Grid item xs>
+                <Grid item xs>{
+
+                    // @ts-ignore
                     <Slider disabled={!turnOnVolumeSound} value={valueSound} onChange={handleChangeSound}
                             aria-labelledby="continuous-slider"/>
+                }
 
                 </Grid>
                 <Grid onClick={() => {
@@ -124,9 +128,12 @@ export default function Player() {
                     }
 
                 </Grid>
-                <Grid item xs>
+                <Grid item xs>{
+
+                    // @ts-ignore
                     <Slider disabled={!turnOnVolumeMusic} value={valueMusic} onChange={handleChangeMusic}
                             aria-labelledby="continuous-slider"/>
+                }
                 </Grid>
                 <Grid onClick={() => {
                     iconClickHandlerMusic()
