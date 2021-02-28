@@ -25,9 +25,6 @@
     color: white;
 }
 
-body {
-    background-color: darkblue;
-}
 
 .App-link {
     color: #61dafb;
@@ -211,6 +208,7 @@ card
     box-shadow: none !important;
 }
 
+
 footer {
     display: flex !important;
     justify-content: space-around;
@@ -220,15 +218,27 @@ footer {
     border-top: 1px solid;
 }
 
-#result-table{
+#result-table {
     max-height: 453px;
 }
 
-.MuiTable-root{
+.MuiTable-root {
     border: none !important;
 }
 
-.MuiTable-root td{
+.MuiTable-root td {
     border-left: none;
     border-right: none;
+}
+
+#sudoku {
+    display: flex;
+    justify-content: center;
+}
+
+.main-div {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
