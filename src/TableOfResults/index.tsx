@@ -28,7 +28,7 @@ export default function TableOfResults() {
     const rows = useSelector(resultsState);
 
     return (
-        <TableContainer component={Paper} style={{maxHeight: "290px"}} >
+        <TableContainer component={Paper} id="result-table">
             <Table className={classes.table} size="small" aria-label="a dense table">
                 <TableHead>
                     <TableRow>

@@ -232,26 +232,32 @@ export function Sudoku() {
         return true;
     }
 
-    if (autosolution) {
-        if (currentBoard.length > 1) {
-            if (nextAuto) {
-                for (let i = 0; i < 81; i++) {
-                    if (currentGameCondition[i].value !== solvedGame[i].value) {
-                        if (nextAuto) {
-                            setTimeout(() => {
-                                setCurrentCell(Math.floor(i / 9), i % 9);
-                            }, 100);
-                            setTimeout(() => {
-                                nextAuto = true;
-                                setNewValueToCell(solvedGame[i].value);
-                            }, 100);
+    useEffect(() => {
+        console.log("auto " + autosolution)
+        if (autosolution) {
+            if (currentBoard.length > 1) {
+                if (nextAuto) {
+                    console.log("next : " + nextAuto)
+                    for (let i = 0; i < 81; i++) {
+                        if (currentGameCondition[i].value !== solvedGame[i].value) {
+                            if (nextAuto) {
+                                setTimeout(() => {
+                                    if (isStarted && !firstRender && autosolution)
+                                        setCurrentCell(Math.floor(i / 9), i % 9);
+                                }, 50);
+                                setTimeout(() => {
+                                    nextAuto = true;
+                                    if (isStarted && !firstRender && autosolution)
+                                        setNewValueToCell(solvedGame[i].value);
+                                }, 50);
+                            }
+                            nextAuto = false;
                         }
-                        nextAuto = false;
                     }
                 }
             }
         }
-    }
+    }, [currentGameCondition]);
 
 
     document.body.onkeypress = event => {

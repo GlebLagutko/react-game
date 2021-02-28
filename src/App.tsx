@@ -16,7 +16,7 @@ import {config} from "webpack";
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import Popup from "reactjs-popup";
 import {EndGameModal} from "./EndGameModal";
-import Player from "./Player";
+import Player from "./PLayer";
 import TableOfResults from "./TableOfResults";
 import {Footer} from "./Footer";
 

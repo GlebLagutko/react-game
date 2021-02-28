@@ -17,51 +17,42 @@ export function SelectDifficulty() {
     const dispatch = useDispatch();
     const difficulty: string = useSelector(difficultyState);
 
+    const changeDifficulty = (difficulty: String) => {
+
+
+        dispatch({type: CHANGE_AUTO_SOLUTION, value: false});
+
+        setTimeout(() => {
+            dispatch({type: START_GAME, value: false});
+            dispatch({type: CHANGE_DIFFICULTY, value: difficulty});
+            dispatch({type: UPDATE_TIME, value: 0});
+            dispatch({type: CHANGE_IS_SOLVED, value: false});
+            dispatch({type: CHANGE_SHOW, value: true});
+
+            dispatch({type: START_TIMER, value: false});
+            saveState();
+        }, 100)
+    };
 
     return (<div>
             <div className="col-md-4">
-                <span className="float-left pr-2 align-middle">Difficulty:</span>
-                <div className="dropdown show float-left" style={{backgroundColor:'#DDFC74'}}>
-                    <a style={{backgroundColor:'#DDFC74'}} className="btn btn-secondary dropdown-toggle" href="#" role="button"
+                <span className="float-left pr-2 align-middle">Difficulty:</span><br></br>
+                <div className="dropdown show float-left">
+                    <a className="btn btn-secondary dropdown-toggle" href="#" role="button"
                        id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {difficulty}
                     </a>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a onClick={() => {
-
-                            dispatch({type: CHANGE_DIFFICULTY, value: "EASY"});
-                            dispatch({type: START_GAME, value: false});
-                            dispatch({type: UPDATE_TIME, value: 0});
-                            dispatch({type: CHANGE_IS_SOLVED, value: false});
-                            dispatch({type: CHANGE_SHOW, value: true});
-
-                            dispatch({type: CHANGE_AUTO_SOLUTION, value: false});
-                            dispatch({type: START_TIMER, value: false});
-                            saveState();
+                            changeDifficulty("EASY");
                         }} className="dropdown-item"
                            href="#">Easy</a>
                         <a onClick={() => {
-                            dispatch({type: CHANGE_DIFFICULTY, value: "MEDIUM"});
-                            dispatch({type: START_GAME, value: false});
-                            dispatch({type: UPDATE_TIME, value: 0});
-                            dispatch({type: CHANGE_IS_SOLVED, value: false});
-                            dispatch({type: CHANGE_SHOW, value: true});
-
-                            dispatch({type: CHANGE_AUTO_SOLUTION, value: false});
-                            dispatch({type: START_TIMER, value: false});
-                            saveState();
+                            changeDifficulty("MEDIUM");
                         }}
                            className="dropdown-item" href="#">Medium</a>
                         <a onClick={() => {
-                            dispatch({type: CHANGE_DIFFICULTY, value: "HARD"});
-                            dispatch({type: START_GAME, value: false});
-                            dispatch({type: UPDATE_TIME, value: 0});
-                            dispatch({type: CHANGE_IS_SOLVED, value: false});
-                            dispatch({type: CHANGE_SHOW, value: true});
-
-                            dispatch({type: CHANGE_AUTO_SOLUTION, value: false});
-                            dispatch({type: START_TIMER, value: false});
-                            saveState();
+                            changeDifficulty("HARD");
                         }} className="dropdown-item"
                            href="#">Hard</a>
                     </div>

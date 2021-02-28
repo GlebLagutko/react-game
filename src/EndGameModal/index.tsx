@@ -13,10 +13,12 @@ import {clientQuery} from "../client";
 import {FETCH_COMPLETED} from "../store/actions/FetchCompleted";
 import {cache} from "webpack";
 import {UPDATE_TIME} from "../store/actions/UpdateTime";
+import {CHANGE_IS_SOLVED} from "../store/actions/ChangeIsSolved";
 
 //
 const isSolved = state => state.value.isSolved;
 const isShow = state => state.value.show;
+const isAuto = state => state.value.autoSolution;
 
 const ADD_TODO = gql`
     mutation AddGame($user:String!,$difficulty:String!,$time:Int!){
@@ -35,6 +37,7 @@ export function EndGameModal() {
     const [inputValue, setInput] = useState('');
 
     const show = useSelector(isShow);
+    const autosolution = useSelector(isAuto);
 
 
     const [addTodo] = useMutation(ADD_TODO);
@@ -53,9 +56,10 @@ export function EndGameModal() {
             }
         }).then(() => {
             clientQuery();
-            localStorage.setItem('time', 0);
+            localStorage.setItem('time', JSON.stringify(0));
             dispatch({type: UPDATE_TIME, value: 0})
             dispatch({type: CHANGE_SHOW, value: false});
+            // dispatch({type: CHANGE_IS_SOLVED, value: false});
             saveState();
         });
 
@@ -68,7 +72,7 @@ export function EndGameModal() {
     // @ts-ignore
     return (
         <>
-            <Modal show={show && solved} keyboard={false} cenetered>
+            <Modal show={show && solved && !autosolution} keyboard={false} cenetered>
                 <Modal.Header>
                     <Modal.Title>You solved it !</Modal.Title>
                 </Modal.Header>

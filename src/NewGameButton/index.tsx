@@ -1,6 +1,6 @@
 import React from "react";
 import {Store} from 'redux'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import store, {saveState} from "../store";
 import {BUTTON_INPUT} from "../store/actions/ButtonInput";
 import {START_GAME} from "../store/actions/StartGame";
@@ -15,19 +15,22 @@ export function NewGameButton({}) {
 
     const dispatch = useDispatch();
 
+
     return (<button type="button" className="w-100 btn btn-outline-primary"
                     onClick={() => {
-                        dispatch({type: START_GAME, value: false});
-                        dispatch({type: UPDATE_TIME, value: 0});
-                        dispatch({type: CHANGE_IS_SOLVED, value: false});
-                        dispatch({type: CHANGE_SHOW, value: true});
-                        dispatch({type: START_TIMER, value: false});
+
 
                         dispatch({type: CHANGE_AUTO_SOLUTION, value: false});
-                        console.log('new game')
-                        // @ts-ignore
-                        console.log(store.getState().value.time)
-                        saveState();
+
+                        setTimeout(() => {
+                            dispatch({type: START_GAME, value: false});
+                            dispatch({type: UPDATE_TIME, value: 0});
+                            dispatch({type: CHANGE_IS_SOLVED, value: false});
+                            dispatch({type: CHANGE_SHOW, value: true});
+                            dispatch({type: START_TIMER, value: false});
+
+                            saveState();
+                        }, 100)
                     }}>New Game</button>
     )
 }
