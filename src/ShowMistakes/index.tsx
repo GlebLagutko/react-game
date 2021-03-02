@@ -24,7 +24,7 @@ export function ShowMistakes() {
                    className="form-check-input" type="checkbox" checked={checked}
                    id="flexCheckDefault"/>
             <div className="form-check-label">
-                Show errors
+                Show mistakes
             </div>
         </div>
     )

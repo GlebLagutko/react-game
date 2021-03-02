@@ -19,7 +19,7 @@ import {CHANGE_AUTO_SOLUTION} from "../store/actions/ChangeAutoSolution";
 import {SET_SOUND_PLAY} from "../store/actions/SetSoundPlay";
 
 enum DIFFICULTY {
-    EASY = 1,
+    EASY = 15,
     MEDIUM = 40,
     HARD = 60
 }
@@ -67,6 +67,7 @@ let buttonInput = state => state.value.buttonInput;
 let start = state => state.value.started;
 let difficultyState = state => state.value.difficulty;
 let autoSolutionState = state => state.value.autoSolution;
+let isSolved = state => state.value.isSolved;
 let prevInputNumber;
 let nextAuto = true;
 
@@ -80,6 +81,7 @@ export function Sudoku() {
     const input = useSelector(buttonInput);
     const isStarted = useSelector(start);
     const difficulty = useSelector(difficultyState);
+    const solved = useSelector(isSolved);
     const dispatch = useDispatch();
     let autosolution = useSelector(autoSolutionState);
 
@@ -247,8 +249,12 @@ export function Sudoku() {
                                 }, 50);
                                 setTimeout(() => {
                                     nextAuto = true;
-                                    if (isStarted && !firstRender && autosolution)
+                                    if (isStarted && !firstRender && autosolution) {
+
+                                        // @ts-ignore
+                                        dispatch({type: SET_SOUND_PLAY, value: true});
                                         setNewValueToCell(solvedGame[i].value);
+                                    }
                                 }, 50);
                             }
                             nextAuto = false;
@@ -261,7 +267,7 @@ export function Sudoku() {
 
 
     document.body.onkeypress = event => {
-        console.log('dasdasd');
+        console.log(event.key);
         if (event.keyCode >= 49 && event.keyCode <= 57 && currentRow !== -1) {
             if (currentGameCondition.length !== 0) {
                 // @ts-ignore
@@ -272,11 +278,14 @@ export function Sudoku() {
             }
         } else if (event.keyCode == 48) {
             currentValue = 0;
+        } else if (event.key === 'f' || event.key === 'F' || event.key === 'а' || event.key === 'А') {
+            if (!solved)
+                document.getElementById("sudoku").requestFullscreen().then();
         }
     }
 
 
-    return (<div>
+    return (<div id="sudoku">
             <table>
                 <tbody>
                 {

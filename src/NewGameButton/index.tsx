@@ -28,7 +28,6 @@ export function NewGameButton({}) {
                             dispatch({type: CHANGE_IS_SOLVED, value: false});
                             dispatch({type: CHANGE_SHOW, value: true});
                             dispatch({type: START_TIMER, value: false});
-
                             saveState();
                         }, 100)
                     }}>New Game</button>

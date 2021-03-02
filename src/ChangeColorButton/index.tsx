@@ -21,7 +21,7 @@ export function ChangeColorButton() {
                    className="form-check-input" type="checkbox" checked={second}
                    id="flexCheckDefault"/>
             <div className="form-check-label">
-                Second color
+                Second color pallet
             </div>
         </div>
     )

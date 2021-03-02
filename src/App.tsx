@@ -20,6 +20,12 @@ import Player from "./PLayer";
 import TableOfResults from "./TableOfResults";
 import {Footer} from "./Footer";
 
+/*alert('Доброго времени суток проверяющий' + '\n' +
+    'Вводить цифры можно и с клавиатуры'+'\n'+
+    'Доп функциональность приложения заключается в бэкенде и сохранении результатов.' +
+    ' К сожалению, так как используется бесплатная версия Apollo Server то результаты хранятся только сутки.'+'\n'+
+    'Всего хорошего')*/
+
 
 function App() {
 
@@ -27,12 +33,12 @@ function App() {
 
     }
 
-    return (<div>
+    return (<div className="main-div">
             <div className="App container-fluid">
                 <div className="container">
 
-                    <div className="row mt-4 ml-4">
-                        <div className="w-50">
+                    <div className="row mt-4 ml-xl-4">
+                        <div className="w-50 pl-xl-5">
                             <SelectDifficulty/>
                         </div>
                         <div className="w-25">

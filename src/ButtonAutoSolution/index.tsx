@@ -28,7 +28,7 @@ export function ButtonAutoSolution() {
             dispatch({type: CHANGE_AUTO_SOLUTION, value: true});
             dispatch({type: START_TIMER, value: false});
             saveState();
-        }} style={{backgroundColor: autosolution ? '#6c757d' : "", color: autosolution ? "white" : ''}}> Auto solution
+        }} style={{backgroundColor: autosolution ? '#6c757d' : "", color: autosolution ? "white" : ''}}> Auto play
         </button>
     )
 }

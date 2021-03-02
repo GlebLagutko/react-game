@@ -21,10 +21,10 @@ export function SelectDifficulty() {
 
 
         dispatch({type: CHANGE_AUTO_SOLUTION, value: false});
+        dispatch({type: CHANGE_DIFFICULTY, value: difficulty});
 
         setTimeout(() => {
             dispatch({type: START_GAME, value: false});
-            dispatch({type: CHANGE_DIFFICULTY, value: difficulty});
             dispatch({type: UPDATE_TIME, value: 0});
             dispatch({type: CHANGE_IS_SOLVED, value: false});
             dispatch({type: CHANGE_SHOW, value: true});

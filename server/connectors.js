@@ -1,4 +1,4 @@
-var games = [];
+srcsrcvar games = [];
 
 export default {
   games() {

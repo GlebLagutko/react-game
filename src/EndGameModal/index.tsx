@@ -78,11 +78,10 @@ export function EndGameModal() {
                 </Modal.Header>
                 <Modal.Body>
                     <p>Your time : {format(Math.floor(time / 60)) + ":" + format(time % 60)}</p>
-                    <form noValidate autoComplete="off">
-                        <TextField id="outlined-basic" label="Name" variant="outlined" onChange={(event => {
-                            setInput(event.target.value);
-                        })}/>
-                    </form>
+                    <TextField id="outlined-basic" label="Name" variant="outlined" onChange={(event => {
+                        setInput(event.target.value);
+                    })}/>
+
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" onClick={handleClose} disabled={!inputValue.trim()}>

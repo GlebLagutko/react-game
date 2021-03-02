@@ -22,10 +22,22 @@ const useStyles = makeStyles({
 
 const soundValue = state => state.value.soundValue;
 const soundPlay = state => state.value.soundPlay;
+const isSolved = state => state.value.isSolved;
+let playedSuccess = false;
 
-const mainMusic = new Audio('../../assets/audio/hours.mp3');
+const mainMusic = new Audio('assets//audio//hours.mp3');
+mainMusic.preload = "auto"
 mainMusic.loop = true;
 mainMusic.volume = 0.5;
+
+
+// @ts-ignore
+let sound = new Audio('..//assets//audio//click.mp3');
+sound.preload = "auto";
+
+// @ts-ignore
+let soundSuccess = new Audio('..//assets//audio//success.wav');
+sound.preload = "auto";
 
 
 export default function Player() {
@@ -34,6 +46,7 @@ export default function Player() {
     const [valueMusic, setValueMusic] = useState(50);
     const playSound = useSelector(soundPlay);
     const playMusic = useSelector(soundPlay);
+    const solved = useSelector(isSolved);
     const dispatch = useDispatch();
 
 
@@ -58,11 +71,19 @@ export default function Player() {
         mainMusic.volume = valueMusic / 100;
     };
 
+    if (!solved) {
+        playedSuccess = false;
+    }
+
+    if (solved && !playedSuccess) {
+        soundSuccess.volume = valueSound / 100;
+        soundSuccess.play();
+        playedSuccess = true
+    }
+
 
     if (playSound) {
         console.log(valueSound);
-        // @ts-ignore
-        let sound = new Audio('../../assets/audio/click.mp3');
         sound.volume = valueSound / 100;
         sound.play();
         dispatch({type: SET_SOUND_PLAY, value: false});
