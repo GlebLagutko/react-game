@@ -7,3 +7,4 @@ https://603df956792ea9a2cfdae455--sudoku-name-gleblagutko.netlify.app/
 
 ### Есть возможность ввода чисел с клваиатуры
 
+## Выполнены все пункты тз
